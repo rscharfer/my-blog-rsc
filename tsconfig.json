@@ -1,16 +1,13 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "strict": true,
-    "verbatimModuleSyntax": true,
     "skipLibCheck": true,
-    "types": [
-      "node"
-    ],
+    "noEmit": true,
     "jsx": "react",
-   // "jsxImportSource": "hono/jsx",
-   // "outDir": "./dist"
+    "types": ["node"]
   },
   "exclude": ["node_modules"]
 }

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 
-export default function Counter(): React.ReactElement {
+export default function Counter() {
   const [count, setCount] = useState(0);
   const increment = () => {
     setCount(count + 1);
