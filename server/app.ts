@@ -9,7 +9,9 @@ import { serveStatic } from "@hono/node-server/serve-static";
 
 const app = new Hono({ strict: false });
 
-app.use('/*', serveStatic({ root: './public' }));
+if (!process.env.NETLIFY) {
+	app.use('/*', serveStatic({ root: './public' }));
+}
 
 app.get('/data', (c) => {
 	return c.json(nameData)
