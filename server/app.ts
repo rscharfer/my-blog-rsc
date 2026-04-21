@@ -5,8 +5,12 @@ import { readFile } from 'fs/promises';
 import MyApp from "../src/MyApp";
 
 import { Hono } from "hono";
+import { serveStatic } from "@hono/node-server/serve-static";
 
 const app = new Hono({ strict: false });
+
+app.use('/*', serveStatic({ root: './dist' }));
+app.use('/*', serveStatic({ root: './public' }));
 
 async function getData(){
 	const url = new URL('../data/name.json', import.meta.url)
@@ -19,6 +23,7 @@ app.get('/data', async (c) => {
 
 	return c.json(data)
 })
+
 
 app.get("/", async (context) => {
 	const data = await getData()

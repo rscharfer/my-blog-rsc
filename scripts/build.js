@@ -17,7 +17,7 @@ const [server, client] = await Promise.all([
     platform: "browser",
     external: ["react", "react-dom/client"],
     format: "esm",
-    outfile: "public/hydrater.js",
+    outfile: "dist/hydrater.js",
   }),
 ]);
 
