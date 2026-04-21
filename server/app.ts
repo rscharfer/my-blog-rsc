@@ -1,33 +1,22 @@
 import { createElement } from "react";
 import { renderToString } from "react-dom/server";
-import { readFile } from 'fs/promises';
 
 import MyApp from "../src/MyApp";
+import nameData from "../data/name.json";
 
 import { Hono } from "hono";
 import { serveStatic } from "@hono/node-server/serve-static";
 
 const app = new Hono({ strict: false });
 
-app.use('/*', serveStatic({ root: './dist' }));
 app.use('/*', serveStatic({ root: './public' }));
 
-async function getData(){
-	const url = new URL('../data/name.json', import.meta.url)
-	const data = await readFile(url, { encoding: 'utf8' });
-	return JSON.parse(data)
-}
-
-app.get('/data', async (c) => {
-	const data = await getData()
-
-	return c.json(data)
+app.get('/data', (c) => {
+	return c.json(nameData)
 })
 
-
 app.get("/", async (context) => {
-	const data = await getData()
-	const appHTML = renderToString(createElement(MyApp, data));
+	const appHTML = renderToString(createElement(MyApp, nameData));
 	return context.html(`<html lang="en">
 	<head>
 		<meta charset="utf-8" />
