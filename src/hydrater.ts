@@ -4,7 +4,7 @@ import MyApp from "./MyApp";
 
 
 
-var data = await fetch("/data").then(response => response.json());
+var data = JSON.parse(document.getElementById('STARTER_DATA')!.textContent)
 
 const root = document.getElementById("root");
 hydrateRoot(root!, createElement(MyApp, data));

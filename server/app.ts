@@ -13,9 +13,6 @@ if (!process.env.NETLIFY) {
 	app.use('/*', serveStatic({ root: './public' }));
 }
 
-app.get('/data', (c) => {
-	return c.json(nameData)
-})
 
 app.get("/", async (context) => {
 	const appHTML = renderToString(createElement(MyApp, nameData));
@@ -38,6 +35,7 @@ app.get("/", async (context) => {
 		<div id="root">${appHTML}</div>
 	</body>
 	<script type="module" src="/hydrater.js"></script>
+	<script type="application/json" id="STARTER_DATA">${JSON.stringify(nameData)}</script>
 	</html>`);
 });
 
