@@ -2,6 +2,8 @@ import { serve } from "@hono/node-server";
 
 import app from "./app";
 
-serve({ fetch: app.fetch, port: 3000 }, () => {
-	console.log("spun up server");
+const PORT = 3000;
+
+serve({ fetch: app.fetch, port: PORT }, () => {
+	console.log("spun up server on port:", PORT);
 });
