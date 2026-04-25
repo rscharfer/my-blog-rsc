@@ -32,3 +32,12 @@ How I did it:
     It processes the file by creating an of the data type ProcessedFile, which is an object with frontmatter, content, tags, and slug
 
 ## New Challenge: Render the index page
+
+
+Particularly hard challenges:
+
+1. I placed all of the props used to render the app on the client side during hydration in a JSON response, but there was a closing `</script>` tag in the JSON response itself which closed up the <script type='application/json'> tag, messing up the JSON parsing.  Solution: escape that is injected into the json tag that could prematurely close that tag on the client so that I am not sending down something like `<script type="application/json">{"conent" : "The </script> tag can be very important"}</script>`.. :/
+
+It's kind of how you have to escape user generated strings which will be injected into the DOM because they could have some nefarious <script>s inside of them.
+
+2. 

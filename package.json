@@ -5,7 +5,8 @@
     "dev": "concurrently \"node scripts/build.js --watch\" \"node --watch dist/server.js\"",
     "build": "node scripts/build.js",
     "start": "node dist/server.js",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "test": "node --experimental-strip-types --test server/posts.test.ts"
   },
   "dependencies": {
     "@hono/node-server": "^1.19.14",
