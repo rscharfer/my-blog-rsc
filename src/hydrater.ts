@@ -1,10 +1,10 @@
 import { createElement } from "react";
 import { hydrateRoot } from "react-dom/client";
-import MyApp from "./MyApp";
+import Index from "./Index";
 
 
 
-var data = JSON.parse(document.getElementById('STARTER_DATA')!.textContent)
+var data = JSON.parse(document.getElementById('STARTER_DATA')!.textContent!);
 
 const root = document.getElementById("root");
-hydrateRoot(root!, createElement(MyApp, data));
+hydrateRoot(root!, createElement(Index, data));
